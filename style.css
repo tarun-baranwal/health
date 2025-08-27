@@ -1,0 +1,103 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+body {
+  background: #f0f8ff;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Container */
+.container, .chat-container {
+  background: #fff;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+}
+
+/* Headings */
+h1, h2, h3 {
+  margin-bottom: 15px;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  background: #1e90ff;
+  color: white;
+  padding: 12px 20px;
+  margin-top: 20px;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+.btn:hover {
+  background: #0c7cd5;
+}
+
+/* Chat UI */
+.chat-container .message {
+  padding: 10px 15px;
+  border-radius: 15px;
+  margin: 10px 0;
+  max-width: 80%;
+}
+.chat-container .user {
+  background: #c7f7d4;
+  margin-left: auto;
+}
+.chat-container .bot {
+  background: #f1f1f1;
+  margin-right: auto;
+}
+.chat-container input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+}
+
+/* Resources Cards */
+.card {
+  background: #e6f7ff;
+  margin: 10px 0;
+  padding: 15px;
+  border-radius: 15px;
+  font-size: 18px;
+  cursor: pointer;
+}
+.card:hover {
+  background: #cceeff;
+}
+
+/* Slots */
+.slots button {
+  margin: 5px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 10px;
+  background: #d1f5d3;
+  cursor: pointer;
+}
+.slots button:hover {
+  background: #aee5b2;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container, .chat-container {
+    max-width: 90%;
+  }
+}

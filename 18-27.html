@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Journey 8-12</title>
+  <style>
+    body {
+      margin: 0; padding: 0; font-family: Arial, sans-serif;
+      height: 100vh; display: flex; justify-content: center; align-items: center;
+      background: linear-gradient(135deg, #ffecd2, #fcb69f);
+      background-size: 400% 400%; animation: gradientBG 15s ease infinite;
+      text-align: center; overflow: hidden;
+    }
+    @keyframes gradientBG { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+    .symbol { position: absolute; font-size: 28px; opacity: 0.3; animation: float 15s linear infinite; }
+    @keyframes float { 0%{transform:translateY(100vh) scale(.5);opacity:.3} 100%{transform:translateY(-10vh) scale(1.2);opacity:0} }
+    .container { background: rgba(255,255,255,0.9); padding: 30px; border-radius: 15px; max-width: 500px; box-shadow: 0 8px 30px rgba(0,0,0,.2); position: relative; z-index: 2; }
+    h2 { color: #333; } p { color:#444; }
+    .quote { font-style: italic; color: #555; }
+    .btn { display:inline-block; margin:8px; padding:12px 22px; background:#ff6f61; color:#fff; text-decoration:none; border-radius:25px; transition:0.3s; font-weight:bold; }
+    .btn:hover{background:#e45745;}
+  </style>
+</head>
+<body>
+  <div class="symbol" style="left:15%; animation-delay:0s;">📚</div>
+  <div class="symbol" style="left:35%; animation-delay:2s;">✏</div>
+  <div class="symbol" style="left:55%; animation-delay:4s;">🎨</div>
+  <div class="symbol" style="left:75%; animation-delay:6s;">🌈</div>
+  <div class="symbol" style="left:90%; animation-delay:8s;">⭐</div>
+
+  <div class="container">
+<h2>🚀 Welcome Changemaker!</h2>
+<p class="quote">"Your future is created by what you do today, not tomorrow."</p>
+    <div>
+      <a href="welcome.html" class="btn">⬅ Previous</a>
+      <a href="bot.html" class="btn">✨ Start Your Journey</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat with Bot</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      background: linear-gradient(135deg, #ffecd2, #fcb69f, #a1c4fd, #c2e9fb);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+    }
+
+    /* Gradient animation */
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Floating symbols */
+    .symbol {
+      position: absolute;
+      font-size: 30px;
+      opacity: 0.4;
+      animation: float 12s linear infinite;
+      z-index: 1;
+    }
+
+    @keyframes float {
+      from { transform: translateY(100vh) rotate(0deg); }
+      to { transform: translateY(-10vh) rotate(360deg); }
+    }
+
+    /* Chat container */
+    .chat-container {
+      width: 90%;
+      max-width: 400px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+      padding: 20px;
+      z-index: 10;
+      position: relative;
+    }
+
+    .message {
+      margin: 8px 0;
+      padding: 10px 14px;
+      border-radius: 12px;
+      max-width: 75%;
+      word-wrap: break-word;
+      font-size: 14px;
+    }
+    .user {
+      background: #e1f5fe;
+      margin-left: auto;
+      text-align: right;
+      border-bottom-right-radius: 2px;
+    }
+    .bot {
+      background: #f1f1f1;
+      margin-right: auto;
+      text-align: left;
+      border-bottom-left-radius: 2px;
+    }
+
+    input[type="text"] {
+      width: calc(100% - 20px);
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      margin-top: 10px;
+    }
+
+    .btn, .btn-start {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 12px 25px;
+      background: #6a11cb;
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .btn:hover, .btn-start:hover {
+      background: #4a0d99;
+    }
+
+    /* Floating Chat Button */
+    #chat-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #ff6b6b;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      font-size: 20px;
+      transition: 0.3s;
+      z-index: 1000;
+    }
+    #chat-button:hover {
+      background: #ff4757;
+    }
+
+    /* Popup Chat Box */
+    #chat-box {
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      width: 300px;
+      background: white;
+      color: black;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      z-index: 1000;
+    }
+
+    #messages {
+      height: 200px;
+      padding: 10px;
+      overflow-y: auto;
+      font-size: 14px;
+      border-bottom: 1px solid #ddd;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #user-input {
+      width: 70%;
+      padding: 10px;
+      border: none;
+      border-top: 1px solid #ddd;
+      outline: none;
+    }
+
+    #chat-box button {
+      width: 30%;
+      padding: 10px;
+      border: none;
+      background: #2575fc;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    #chat-box button:hover {
+      background: #1a5edb;
+    }
+
+    /* Back to Home Button */
+    #back-home {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background: #6a11cb;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: 0.3s;
+      z-index: 1000;
+    }
+    #back-home:hover {
+      background: #4a0d99;
+    }
+
+    /* Chat bot indicator */
+    #chat-indicator {
+      position: fixed;
+      bottom: 140px;
+      right: 20px;
+      background: #ffcc00;
+      padding: 10px 15px;
+      border-radius: 12px;
+      font-weight: bold;
+      font-size: 13px;
+      color: black;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      animation: pop 1s infinite alternate;
+      z-index: 1000;
+    }
+    @keyframes pop {
+      from { transform: scale(1); }
+      to { transform: scale(1.1); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Floating fun student symbols -->
+  <div class="symbol" style="left:10%; animation-duration: 14s;">📚</div>
+  <div class="symbol" style="left:30%; animation-duration: 18s;">✏</div>
+  <div class="symbol" style="left:50%; animation-duration: 16s;">🌟</div>
+  <div class="symbol" style="left:70%; animation-duration: 20s;">😊</div>
+  <div class="symbol" style="left:85%; animation-duration: 22s;">☕</div>
+
+  <!-- Main Chat Container -->
+  <div class="chat-container">
+    <div class="message user">I'm feeling overwhelmed</div>
+    <div class="message bot">
+      I'm sorry to hear that. Here are some coping strategies:<br>
+      1. Talk to someone you trust.<br>
+      2. Engage in physical activity.<br>
+      3. Make time for hobbies.
+    </div>
+    <div class="message bot">Would you like to talk to a counselor?</div>
+    <div class="message user">Yes. Please connect me.</div>
+
+    <input type="text" placeholder="Type a message...">
+    <a href="resources.html" class="btn">Go to Resources</a>
+    <br>
+    <a href="start-chat.html" class="btn-start">Start Chat</a>
+  </div>
+
+  <!-- Back to Home Button -->
+  <a id="back-home" href="welcome.html">🏠 Home</a>
+
+  <!-- Chat Bot Indicator -->
+  <div id="chat-indicator">👋 Hi, it's Kabutar! I want to give your problems to your enemy 🤪</div>
+
+  <!-- Floating Chat Button -->
+  <div id="chat-button" onclick="toggleChat()">💬</div>
+
+  <!-- Chat Box -->
+  <div id="chat-box">
+    <div id="messages"></div>
+    <div style="display:flex;">
+      <input type="text" id="user-input" placeholder="Type here..." />
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+  <script>
+    function toggleChat() {
+      const chatBox = document.getElementById("chat-box");
+      chatBox.style.display = chatBox.style.display === "none" ? "flex" : "none";
+    }
+
+    function sendMessage() {
+      const input = document.getElementById("user-input");
+      const messages = document.getElementById("messages");
+
+      if (input.value.trim() !== "") {
+        const userMsg = document.createElement("div");
+        userMsg.classList.add("message", "user");
+        userMsg.textContent = input.value;
+        messages.appendChild(userMsg);
+
+        const botMsg = document.createElement("div");
+        botMsg.classList.add("message", "bot");
+        botMsg.textContent = "Thanks for sharing. I’m here for you 💙";
+        messages.appendChild(botMsg);
+
+        messages.scrollTop = messages.scrollHeight;
+        input.value = "";
+      }
+    }
+  </script>
+</body>
+</html>

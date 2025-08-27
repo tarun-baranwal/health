@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ffecd2, #fcb69f, #a1c4fd, #c2e9fb);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      overflow: hidden;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .symbol {
+      position: absolute;
+      font-size: 30px;
+      opacity: 0.4;
+      animation: float 12s linear infinite;
+    }
+
+    @keyframes float {
+      from { transform: translateY(100vh) rotate(0deg); }
+      to { transform: translateY(-10vh) rotate(360deg); }
+    }
+
+    .container {
+      text-align: center;
+      background: rgba(255,255,255,0.9);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+      z-index: 10;
+      width: 90%;
+      max-width: 400px;
+    }
+
+    h2 {
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    p {
+      margin-bottom: 20px;
+      font-size: 16px;
+      color: #555;
+    }
+
+    img {
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      display: block;
+      margin: 10px auto;
+      padding: 12px 20px;
+      background: #2575fc;
+      color: white;
+      text-decoration: none;
+      border-radius: 25px;
+      transition: 0.3s;
+      font-weight: bold;
+    }
+
+    .btn:hover {
+      background: #1a5edb;
+    }
+
+    /* Back button style */
+    .back-btn {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      padding: 10px 18px;
+      background: #2575fc;
+      color: white;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .back-btn:hover {
+      background: #1a5edb;
+    }
+  </style>
+</head>
+<body>
+  <!-- Floating fun symbols -->
+  <div class="symbol" style="left:10%; animation-duration: 14s;">📚</div>
+  <div class="symbol" style="left:30%; animation-duration: 18s;">✏</div>
+  <div class="symbol" style="left:50%; animation-duration: 16s;">🌟</div>
+  <div class="symbol" style="left:70%; animation-duration: 20s;">😊</div>
+  <div class="symbol" style="left:85%; animation-duration: 22s;">☕</div>
+
+  <div class="container">
+    <h2>Welcome</h2>
+    <p>Anonymous Mental Health Support</p>
+    <img src="https://img.icons8.com/ios-filled/100/brainstorm-skill.png" alt="Brain">
+    <a href="8-12.html" class="btn">Age 8-12</a>
+    <a href="13-17.html" class="btn">Age 13-17</a>
+    <a href="18-27.html" class="btn">Age 18-27</a>
+    <a href="28-40.html" class="btn">Age 28-40</a>
+    <a href="41-60.html" class="btn">Age 41-60</a>
+  </div>
+
+  <!-- Back Button -->
+  <a href="index.html" class="back-btn">⬅ Back</a>
+</body>
+</html>

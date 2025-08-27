@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resources</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: linear-gradient(135deg, #ffecd2, #fcb69f, #a1c4fd, #c2e9fb);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      height: 100vh;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .symbol {
+      position: absolute;
+      font-size: 30px;
+      opacity: 0.4;
+      animation: float 15s linear infinite;
+    }
+
+    @keyframes float {
+      from { transform: translateY(100vh) rotate(0deg); }
+      to { transform: translateY(-10vh) rotate(360deg); }
+    }
+
+    .container {
+      position: relative;
+      z-index: 10;
+      padding: 30px;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    h2 {
+      color: #333;
+      margin-bottom: 20px;
+      font-size: 26px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      margin: 15px 0;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.3s ease;
+      text-align: left;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      background: #f0f8ff;
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      color: #2575fc;
+    }
+
+    .card p {
+      margin: 0;
+      color: #555;
+      font-size: 14px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 20px;
+      background: #2575fc;
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+      background: #1a5edb;
+    }
+  </style>
+</head>
+<body>
+  <!-- Floating student-friendly emojis -->
+  <div class="symbol" style="left:5%; animation-duration: 14s;">📚</div>
+  <div class="symbol" style="left:20%; animation-duration: 18s;">☕</div>
+  <div class="symbol" style="left:40%; animation-duration: 20s;">✏</div>
+  <div class="symbol" style="left:60%; animation-duration: 16s;">🌟</div>
+  <div class="symbol" style="left:80%; animation-duration: 22s;">😊</div>
+
+  <div class="container">
+    <h2>🌱 Student Wellness Resources</h2>
+
+    <!-- Relaxation Audio -->
+    <div class="card" onclick="location.href='relaxation.html'">
+      <h3>🎵 Relaxation Tips</h3>
+      <p>Listen to calming sounds to ease your mind during stressful study sessions.</p>
+    </div>
+
+    <!-- Meditation -->
+    <div class="card" onclick="location.href='meditation.html'">
+      <h3>▶ Guided Meditation</h3>
+      <p>Explore short meditation videos designed for students dealing with overthinking and exam stress.</p>
+    </div>
+
+    <!-- Wellness Articles -->
+    <div class="card" onclick="location.href='arcticles.html'">
+      <h3>📖 Wellness Articles</h3>
+      <p>Understand why students face anxiety, overthinking, and ways to overcome them.</p>
+    </div>
+
+    <!-- Buttons Row -->
+    <div style="display: flex; justify-content: center; gap: 15px; margin-top: 20px;">
+      <a href="chat.html" class="btn">⬅ Back</a>
+      <a href="appointment.html" class="btn">📅 Book Appointment</a>
+    </div>
+  </div>
+</body>
+</html>

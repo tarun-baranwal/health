@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mental Health Chatbot</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: white;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 500px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    h1 {
+      margin-bottom: 15px;
+    }
+
+    p {
+      margin-bottom: 25px;
+      font-size: 18px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 25px;
+      background: #ff6b6b;
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #ff4757;
+    }
+
+    /* Floating Chat Button */
+    #chat-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #ff6b6b;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      font-size: 20px;
+      transition: 0.3s;
+      z-index: 1000;
+    }
+
+    #chat-button:hover {
+      background: #ff4757;
+    }
+
+    /* Chat Box */
+    #chat-box {
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      width: 300px;
+      background: white;
+      color: black;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    #messages {
+      height: 200px;
+      padding: 10px;
+      overflow-y: auto;
+      font-size: 14px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    #user-input {
+      width: 70%;
+      padding: 10px;
+      border: none;
+      border-top: 1px solid #ddd;
+      outline: none;
+    }
+
+    #chat-box button {
+      width: 30%;
+      padding: 10px;
+      border: none;
+      background: #2575fc;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    #chat-box button:hover {
+      background: #1a5edb;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome to Your Chatbot</h1>
+    <p>Your safe space to talk, get support, and access helpful resources.</p>
+    <a href="chat.html" class="btn">Go to Full Chat</a>
+  </div>
+
+  <!-- Chat Button -->
+  <div id="chat-button" onclick="toggleChat()">💬</div>
+
+  <!-- Chat Box -->
+  <div id="chat-box">
+    <div id="messages"></div>
+    <div style="display:flex;">
+      <input type="text" id="user-input" placeholder="Type here..." />
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+  <script>
+    function toggleChat() {
+      const chatBox = document.getElementById("chat-box");
+      chatBox.style.display = chatBox.style.display === "none" ? "flex" : "none";
+    }
+
+    function sendMessage() {
+      const input = document.getElementById("user-input");
+      const messages = document.getElementById("messages");
+
+      if (input.value.trim() !== "") {
+        const userMsg = document.createElement("div");
+        userMsg.textContent = "You: " + input.value;
+        messages.appendChild(userMsg);
+
+        // Fake bot reply
+        const botMsg = document.createElement("div");
+        botMsg.textContent = "Bot: I hear you. Let's talk.";
+        messages.appendChild(botMsg);
+
+        messages.scrollTop = messages.scrollHeight;
+        input.value = "";
+      }
+    }
+  </script>
+</body>
+</html>
